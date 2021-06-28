@@ -1,0 +1,75 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: #D9EEF3;
+}
+
+.Principal{
+    margin-top: 10%;
+    margin-left: auto;
+    text-align: center;
+}
+
+
+.Articulos{
+    text-align: center; 
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 15px 15px;
+    border: black;
+    border-style: solid;
+    background-color: #0AA9BA;
+}
+
+.Articulos h1{
+    text-align: left;
+}
+
+.Articulos h2{
+    margin-top: 10px;
+    font-size: 20px;
+    color: black;
+}
+
+.tChico{
+    font-size: 15px;
+}
+
+.tMediano{
+    font-size: 20px;
+}
+
+.tGrande{
+    font-size: 25px;
+}
+
+.Buttons{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.Buttons button{
+    height: 40px;
+    width: 20%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #0C7B97;
+}
+
+.Buttons button:hover{
+    background: #0AA9BA;
+}
+
+
+

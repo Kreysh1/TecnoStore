@@ -17,12 +17,12 @@
 
 .left-content{
     float: left;
-    width: 40%;
+    width: 50%;
 }
 
 .right-content{
     float:right;
-    width: 60%;
+    width: 50%;
 }
 
 form .left-content .input-box{
@@ -110,8 +110,23 @@ background: #0AA9BA;
     border-radius: 5px;
     border: none;
     width: 100%;
-    height: 55vh;
     overflow-y: auto;
+}
+
+table{
+    width: 35vw;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.ventas{
+    width: 80vw;
+    background-color: white;
+    border: 1px solid black;
+}
+
+th, td{
+    border: 1px solid black;
 }
 
 /* Productos  */
@@ -247,4 +262,3 @@ background: #0AA9BA;
     border-radius: 10px;
     background-color: #0AA9BA;
 }
-

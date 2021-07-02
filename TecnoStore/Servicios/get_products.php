@@ -12,6 +12,8 @@ while($row=mysqli_fetch_array($result)){
 	$obj->Nombre=$row['Nombre'];
 	$obj->Descripcion=$row['Descripcion'];
 	$obj->Precio=$row['Precio'];
+	$obj->Cantidad=$row['Cantidad'];
+	$obj->Estado=$row['Estado'];
 	$obj->Imagen=$row['Imagen'];
 	$datos[$i]=$obj;
 	$i++;

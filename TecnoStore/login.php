@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenidos a TecnoStore</title>
+	<script src="https://kit.fontawesome.com/f7197c532d.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/login.css">
 </head>
@@ -23,6 +24,9 @@
 			</form>
 			<a class="registro" href="registro.php">Registrarme</a>
 		</div>
+	</div>
+	<div class="GIT">
+		<a href="https://github.com/Kreysh1/TecnoStore"><i class="fab fa-github"></i></a>
 	</div>
 </body>
 </html>

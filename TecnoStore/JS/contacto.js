@@ -45,14 +45,6 @@ function MailValidation(){
     }
 }
 
-function Captura(){
-    alert(
-        "Nombre: " + nombre.value +
-        "\nCorreo: " + correo.value +
-        "\nMensaje: " + mensaje.value
-        );
-}
-
 function Clear(){
     nombre.value = "";
     correo.value = "";

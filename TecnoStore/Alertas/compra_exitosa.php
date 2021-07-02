@@ -1,5 +1,4 @@
 <?php
-    
 	session_start();
     $id = $_SESSION['id'];
     $name = $_SESSION['name'];
@@ -34,7 +33,7 @@
 </head>
 <body id="body" onload="Load(<?php echo $id; ?>);">
     <nav id="nav">
-        <ul><a href="index.php" title="Inicio"><img src="../IMG/TS_Logo.png"></a></ul>
+        <ul><a href="../index.php" title="Inicio"><img src="../IMG/TS_Logo.png"></a></ul>
         <ul><li><h1>TecnoStore</h1></li></ul>
     </nav>
     <section class="principal">

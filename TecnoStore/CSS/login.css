@@ -20,6 +20,11 @@ body{
 	max-width: 1180px;
 }
 
+.content-page a{
+    width: 10vw;
+    transform: translate(120% , 0);
+}
+
 form{
     max-width: 460px;
     width: calc(100% - 40px);
@@ -70,4 +75,9 @@ form p{
   display: flex;
   margin: auto;
   transform: translate(62%);
+}
+
+.GIT{
+    position:absolute;
+    bottom:0;
 }

@@ -130,7 +130,14 @@ nav ul div li ul li a{
 	max-width: 1180px;
 }
 
-.content-page section{
+.content-page2{
+	margin: auto;
+	padding: 10px;
+	width: calc(100% - 20px);
+	max-width: 1180px;
+}
+
+.content-page2 form{
 	display: flex;
 	background: #fff;
 }
@@ -172,13 +179,38 @@ nav ul div li ul li a{
 	font-weight: normal;
 }
 
-.part2 button{
+.part2 h4{
+	color: #333;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+.part2 a{
+	color: white;
+	text-decoration: none;
+}
+
+.part2 .cantidad{
+	width: 30px;
+}
+
+.part2 .comprar{
 	border-style: none;
 	border-radius: 5px;
 	padding: 13px 20px;
 	color: #fff;
 	background: #0C7B97;
 	cursor: pointer;
+	font-size: 16px;
+}
+
+.part2 button{
+	border-style: none;
+	border-radius: 5px;
+	padding: 13px 20px;
+	color: #fff;
+	background: #0C7B97;
+	cursor: context-menu;
 	font-size: 16px;
 }
 
@@ -253,7 +285,11 @@ nav ul div li ul li a{
 	padding: 5px;
 	width: 20%;
 	height: 50%;
-	transform: translate( 50% , 80%);
+	transform: translate( 30% , 60%);
+}
+
+.detail-quantity{
+	font-size: 12px;
 }
 
 .page-item{

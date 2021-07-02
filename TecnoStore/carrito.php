@@ -1,4 +1,14 @@
 <?php
+
+    include_once('Servicios/conexion2.php');
+
+    //Llamada a los productos de la base de datos
+    $sql_productos = 'SELECT * FROM t_carrito';
+    $sentencia_productos= $pdo->prepare($sql_productos);
+    $sentencia_productos->execute();
+    $resultado_productos=$sentencia_productos->fetchAll();
+
+    $total = 0;
     
 	session_start();
     $id = $_SESSION['id'];
@@ -40,8 +50,9 @@
         <ul>
             <div class="options-place">
                 <?php 
-                    if ($nivel == '1'){
-                        echo '<li><a href="gestor.php" title="Gestión de Productos"><i class="fas fa-box"></i></a></li>';
+                    if ($nivel == '1' || $nivel == '2'){
+                        echo '<li><a href="gestor.php" title="Gestor"><i class="fas fa-box"></i></a></li>';
+                        echo '<li><a href="reportes.php" title="Reportes"><i class="fas fa-chart-bar"></i></a></li>';
                     }
                 ?>
                 <li><a href="" title="Perfil"><i class="far fa-user-circle"></i></a>
@@ -63,113 +74,41 @@
         <table>
             <tr>
                 <th>Producto</th>
-                <th>Cantidad</th>
                 <th>Subtotal</th>
             </tr>
-            <tr>
-                <td>
-                    <div class="cartInfo">
-                        <img src="IMG/Motorola_1.JPG">
-                        <div>
-                            <p>Nombre del Producto</p>
-                            <small>Precio: $100.00</small>
-                            <br>
-                            <a href="">Eliminar</a>
+            <?php foreach($resultado_productos as $producto):?>
+                <tr>
+                    <td>
+                        <div class="cartInfo">
+                            <img src="Uploads/<?php echo $producto['Imagen'] ?>">
+                            <div>
+                                <p><?php echo $producto['Nombre'] ?></p>
+                                <small><?php echo $producto['Descripcion'] ?></small>
+                                <br>
+                                <small>$<?php echo $producto['Precio'] ?>x<?php echo $producto['Cantidad'] ?></small>
+                                <br>
+                                <a href="Servicios/remove_cart.php?ID=<?php echo $producto['ID_Carrito'] ?>">Eliminar</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$100.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartInfo">
-                        <img src="IMG/Motorola_1.JPG">
-                        <div>
-                            <p>Nombre del Producto</p>
-                            <small>Precio: $100.00</small>
-                            <br>
-                            <a href="">Eliminar</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$100.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartInfo">
-                        <img src="IMG/Motorola_1.JPG">
-                        <div>
-                            <p>Nombre del Producto</p>
-                            <small>Precio: $100.00</small>
-                            <br>
-                            <a href="">Eliminar</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$100.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartInfo">
-                        <img src="IMG/Motorola_1.JPG">
-                        <div>
-                            <p>Nombre del Producto</p>
-                            <small>Precio: $100.00</small>
-                            <br>
-                            <a href="">Eliminar</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$100.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartInfo">
-                        <img src="IMG/Motorola_1.JPG">
-                        <div>
-                            <p>Nombre del Producto</p>
-                            <small>Precio: $100.00</small>
-                            <br>
-                            <a href="">Eliminar</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$100.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartInfo">
-                        <img src="IMG/Motorola_1.JPG">
-                        <div>
-                            <p>Nombre del Producto</p>
-                            <small>Precio: $100.00</small>
-                            <br>
-                            <a href="">Eliminar</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$100.00</td>
-            </tr>
+                    </td>
+                    <td>$<?php echo $producto['Subtotal'] ?></td>
+                </tr>
+            <?php $total += $producto['Subtotal']; endforeach; ?>
         </table>
         <div class="totalPrice">
             <table>
                 <tr>
-                    <td>Total</td>
-                    <td>$600.00</td>
+                    <td>Total:</td>
+                    <td>$<?php echo number_format($total,2) ?></td>
                 </tr>
             </table>
         </div>
         <footer id="footer">
-            <div>
+            <form id="buyForm" action="Servicios/buy_cart.php" method="POST">
                 <h1>Envío a Calle Ficticia #11111 C.P 11111, Ciudad, Municipio</h1>
+                <input type="hidden" name="id_user" value="<?php echo $id?>">
                 <button class="btnCompra" type="submit">Pagar</button>
-            </div>
+            </form>
         </footer>
     </div> 
 </body>

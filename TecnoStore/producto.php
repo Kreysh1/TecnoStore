@@ -10,6 +10,9 @@
     if ($user == NULL || $user== ''){
         header("location:login.php");
     }
+
+    $p = $_GET["p"];
+    $cantidad = 0;
     
     /*session_start();
     $index = $_SESSION['index'];
@@ -40,8 +43,9 @@
         <ul>
             <div class="options-place">
                 <?php 
-                    if ($nivel == '1'){
-                        echo '<li><a href="gestor.php" title="Gestión de Productos"><i class="fas fa-box"></i></a></li>';
+                    if ($nivel == '1' || $nivel == '2'){
+                        echo '<li><a href="gestor.php" title="Gestor"><i class="fas fa-box"></i></a></li>';
+                        echo '<li><a href="reportes.php" title="Reportes"><i class="fas fa-chart-bar"></i></a></li>';
                     }
                 ?>
                 <li><a href="" title="Perfil"><i class="far fa-user-circle"></i></a>
@@ -60,19 +64,24 @@
         </ul>
     </nav>
 	<div class="main-content">
-        <div class="content-page">
-            <section>
+        <div class="content-page2">
+            <form id="buyForm" action="Servicios/redir.php" method="GET">
 				<div class="part1">
 					<img id="idimg">
 				</div>
-				<div class="part2">
-					<h2 id="idtitle"></h2>
-					<h1 id="idprice"></h1>
-					<h3 id="iddescription"></h3>
-					<button>Comprar ahora</button>
-                    <button>Agregar al carrito</button>
-				</div>
-			</section>
+                <div class="part2">
+                    <h2 id="idtitle"></h2>
+                    <h1 id="idprice"></h1>
+                    <h3 id="iddescription"></h3>
+                    <h4 id="idstock"></h4>
+                    Cantidad de Artículos: <input type="number" name="cArticulos" id="cantidad" value="1" min="1"><br>
+                    <input type="hidden" name="p" class="cantidad" value="<?php echo $_GET["p"]; ?>">
+                    <input type="submit" name="comprar" class="comprar" value="Comprar ahora">
+                    <input type="submit" name="carrito" class="comprar" value="Agregar al carrito">
+                    
+                   <!-- FORMULARIO DE USUARIOS  <button disabled><a href="Servicios/add_cart.php?producto=<?php echo $_GET["p"]; ?>&cantidad=">Agregar al carrito</a></button> > -->
+                </div>
+            </form>
         </div>
     </div>
     <script type="text/javascript">
@@ -93,6 +102,7 @@
 							document.getElementById("idtitle").innerHTML=data.datos[i].Nombre;
 							document.getElementById("idprice").innerHTML=formato_precio(data.datos[i].Precio);
 							document.getElementById("iddescription").innerHTML=data.datos[i].Descripcion;
+                            document.getElementById("idstock").innerHTML="Stock Disponible:"+data.datos[i].Cantidad;
 						}
 					}
 				},

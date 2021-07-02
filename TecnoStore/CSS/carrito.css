@@ -60,7 +60,7 @@ td img{
 
 .totalPrice{
     display: flex;
-    justify-content: flex-end;
+    justify-content:flex-end;
 }
 
 .totalPrice table{
@@ -68,6 +68,7 @@ td img{
     width: 100%;
     max-width: 350px;
 }
+
 
 .btnCompra{
     border-style: none;
@@ -86,7 +87,7 @@ footer{
     margin: 20px;
 }
 
-footer div{
+footer form{
     display: flex;
 }
 

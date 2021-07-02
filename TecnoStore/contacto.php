@@ -40,7 +40,7 @@
         <div class="contact-wrapper">
             <div class="contact-form">
                 <h3>Contacto</h3>
-                <form method="POST" action="#" onsubmit="Captura();" onreset="Clear();">
+                <form method="POST" action="Servicios/send_contactoMail.php" onreset="Clear();">
                     <p>
                         <label>Nombre</label>
                         <input type="text" name="Nombre" id="Nombre" onchange="NameValidation();">

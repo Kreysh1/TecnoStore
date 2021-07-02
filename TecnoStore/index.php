@@ -17,6 +17,9 @@
     if ($user == NULL || $user== ''){
         header("location:login.php");
     }
+    if(!$_GET){
+        header('Location:index.php?pagina=1');
+    }
 
     $total_articulos = $sentencia->rowCount();
     $articulos_x_pagina = 6;
@@ -55,8 +58,9 @@
         <ul>
             <div class="options-place">
                 <?php 
-                    if ($nivel == '1'){
-                        echo '<li><a href="gestor.php" title="Gestión de Productos"><i class="fas fa-box"></i></a></li>';
+                    if ($nivel == '1' || $nivel == '2'){
+                        echo '<li><a href="gestor.php" title="Gestor"><i class="fas fa-box"></i></a></li>';
+                        echo '<li><a href="reportes.php" title="Reportes"><i class="fas fa-chart-bar"></i></a></li>';
                     }
                 ?>
                 <li><a href="" title="Perfil"><i class="far fa-user-circle"></i></a>
@@ -74,56 +78,13 @@
             </div> 
         </ul>
     </nav>
-    <div class="second-bar">
-        <div>
-            <li class="search-place">
-            <input type="text" id="searchBar" placeholder="Buscar...">
-            <button><i class="fas fa-search"></i></button>    
-            </li>
-        </div>
-    </div>
-    <div class="main-content">
-        <div class="product-filter">
-            <div class="title-section">Filtrar Productos</div>
-            <hr>
-            <div class="subtitle-section">Marcas</div>
-            <div class="list-group">
-                <ul>
-                    <li>
-                    <input type="checkbox">
-                    <label for="Marca">Samsung</label>
-                    </li>
-                    <li>
-                    <input type="checkbox">
-                    <label for="Marca">Huawei</label>
-                    </li>
-                </ul>  
-            </div>
-            <div class="subtitle-section">Tipos</div>
-            <div class="list-group">
-                <ul>
-                    <li>
-                        <input type="checkbox">
-                        <label for="Tipo">Pantallas</label>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <label for="Tipo">Fundas</label>
-                    </li>
-                </ul>  
-            </div>
-            <button>Aplicar Filtros</button>
-        </div> 
-    </div>
     <div class="content-page">
         <div class="title-section">Productos</div>
         <hr>
         <div class="products-list" id="space-list">
             <!-- Aqui se generan los productos -->
             <?php
-            if(!$_GET){
-                header('Location:index.php?pagina=1');
-            }
+            
             if($_GET['pagina'] > $paginas || $_GET['pagina'] <= 0){
                 header('Location:index.php?pagina=1');
             }
@@ -151,6 +112,7 @@
                                 <div class="detail-description"><?php echo $articulo['Descripcion'] ?></div>
                             </div>
                             <div class="detail-price">$<?php echo $articulo['Precio'] ?></div>
+                            <div class="detail-quantity">Stock disponible: <?php echo $articulo['Cantidad'] ?> </div> 
                         </div>
                     </a>
                 </div>

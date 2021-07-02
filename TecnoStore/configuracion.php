@@ -34,13 +34,14 @@
 </head>
 <body id="body" onload="Load(<?php echo $id; ?>);">
     <nav id="nav">
-        <ul><a href="index.php" title="Inicio"><img src="IMG/TS_Logo.png"></a></ul>
+        <ul><a href="index.php?pagina=1" title="Inicio"><img src="IMG/TS_Logo.png"></a></ul>
         <ul><li><h1>TecnoStore</h1></li></ul>
         <ul>
             <div class="options-place">
                 <?php 
-                    if ($nivel == '1'){
-                        echo '<li><a href="gestor.php" title="Gestión de Productos"><i class="fas fa-box"></i></a></li>';
+                    if ($nivel == '1' || $nivel == '2'){
+                        echo '<li><a href="gestor.php" title="Gestor"><i class="fas fa-box"></i></a></li>';
+                        echo '<li><a href="reportes.php" title="Reportes"><i class="fas fa-chart-bar"></i></a></li>';
                     }
                 ?>
                 <li><a href="" title="Perfil"><i class="far fa-user-circle"></i></a>
@@ -84,7 +85,7 @@
     </section>
     <div class="Buttons">
         <button onclick="Save(<?php echo $id; ?>)">Guardar</button>
-        <button onclick="Reset(<?php echo $index; ?>)">Reset</button>
+        <button onclick="Reset(<?php echo $id; ?>)">Reset</button>
     </div>
     <script src="JS/configuracion.js"></script>
 </body>

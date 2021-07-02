@@ -1,15 +1,17 @@
 <?php
 include('conexion.php');
 	//conexion con la base de datos y el servidor
-	$db = mysqli_select_db($con,$dbname) or die("<h2>Error de Conexion</h2>");
+	$db = mysqli_select_db($con,$dbname) or die(mysqli_error($con));
 
 	//obtenemos los valores del formulario
 	$nombre = $_POST['nombreUsuario'];
     $nick = strtoupper($_POST['nickUsuario']);
+	$edad  = $_POST['ageUsuario'];
 	$email = $_POST['correoUsuario'];
 	$pass = $_POST['passUsuario'];
 	$rpass = $_POST['repassUsuario'];
 	$nivel = "3";
+	$estado = "0";
 
 	$sql="SELECT * FROM t_usuarios WHERE Nick='$nick'";
 	$result=mysqli_query($con,$sql);
@@ -20,11 +22,10 @@ include('conexion.php');
 		//se encripta la contraseña
 		$contraseñaUser = md5($pass);
 		//ingresamos la informacion a la base de datos
-		mysqli_query($con,"INSERT INTO t_usuarios VALUES('','$nombre','$nick','$email','$contraseñaUser','$nivel')") or die("<h2>Error Guardando los datos</h2>");
+		mysqli_query($con,"INSERT INTO t_usuarios (Nombre,Edad,Nick,Correo,Pass,Nivel,Estado) VALUES('$nombre','$edad','$nick','$email','$contraseñaUser','$nivel','$estado')") or die(mysqli_error($con));
 		echo'
 			<script>
-				alert("Registro Exitoso");
-				location.href="../registro.php";
+				location.href="send_confirmationMail.php?user=' . $nick . '&email=' . $email . '";
 			</script>
 		';
 	}

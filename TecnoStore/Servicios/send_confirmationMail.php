@@ -5,7 +5,7 @@ require("../PHPMailer/class.smtp.php");
 $user = $_GET['user'];
 $destinatario = $_GET['email'];
 $ruta_host = 'https://gonzalez-juan-302.000webhostapp.com/';
-$ruta_local = 'http://localhost/test1/';
+//$ruta_local = 'http://localhost/test1/';
 
 $mail = new PHPMailer(true);
 try{
@@ -34,7 +34,7 @@ try{
 
         <h1><b>TecnoStore</b></h1>
         <br>
-        <a href="' . $ruta_local . 'TecnoStore/Servicios/account_activation.php?user=' . $user . '&email=' . $destinatario . '">Link de Activación</a>
+        <a href="' . $ruta_host . 'TecnoStore/Servicios/account_activation.php?user=' . $user . '&email=' . $destinatario . '">Link de Activación</a>
 
         </body> 
         </html>
